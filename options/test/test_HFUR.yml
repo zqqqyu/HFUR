@@ -1,0 +1,53 @@
+name: HFUR
+model_type: HFURModel
+scale: 1
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+datasets:
+  test:
+    name: LDV
+    type: VideoTestDataset
+    dataroot_gt: /home/zqy/dataset/test_gt 
+    dataroot_lq: /home/zqy/dataset/test_qp37  
+    meta_info_file: /home/zqy/HFUR-master/basicsr/data/meta_info/meta_info_LDV5_test_GT.txt 
+    io_backend:
+      type: disk
+
+    cache_data: false
+    num_frame: 5
+    padding: reflection_circle
+        
+    batch_size_per_gpu: 1
+
+# network structures
+network_g:
+  type: HFUR
+  num_in_ch: 3
+  num_out_ch: 3
+  num_feat: 64
+  num_frame: 7
+  deformable_groups: 8
+  num_extract_block: 5
+  num_reconstruct_block: 10
+  center_frame_idx: ~
+  hr_in: false
+  with_predeblur: false
+  with_tsa: true
+
+# path
+path:
+  root: /home/zqy/HFUR
+  pretrain_network_g: /home/zqy/HFUR/experiments/train_qp37_HFUR/models/net_g_latest.pth   
+  strict_load_g: True
+
+# validation settings
+val:
+  save_img: true 
+  suffix: ~  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
