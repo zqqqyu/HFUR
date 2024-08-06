@@ -7,14 +7,11 @@ from basicsr.models.video_base_model import VideoBaseModel
 logger = logging.getLogger('basicsr')
 
 
-class EDVRModel(VideoBaseModel):
-    """EDVR Model.
-
-    Paper: EDVR: Video Restoration with Enhanced Deformable Convolutional Networks.  # noqa: E501
-    """
+class HFURModel(VideoBaseModel):
+   
 
     def __init__(self, opt):
-        super(EDVRModel, self).__init__(opt)
+        super(HFURModel, self).__init__(opt)
         if self.is_train:
             self.train_tsa_iter = opt['train'].get('tsa_iter')
 
