@@ -4,7 +4,7 @@ This is the official repository of "Hierarchical Frequency-based Upsampling and 
 ## Table of Content
 1. [Video Demos](#video-demos)
 2. [Code](#code)
-3. [Dataset](#dataset)
+3. [Datasets](#datasets)
 
 
 ## Video Demos
