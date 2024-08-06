@@ -21,6 +21,22 @@ https://github.com/user-attachments/assets/2ae577a3-dc64-4923-8c54-5caebb7724e2
 
 ## Code
 ### Installation
+
 - Python >= 3.8 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html))
 - [PyTorch >= 2.0](https://pytorch.org/)
 - NVIDIA GPU + [CUDA](https://developer.nvidia.com/cuda-downloads)
+
+### Single GPU Training
+
+> CUDA_VISIBLE_DEVICES=0 \\\
+> python basicsr/train.py -opt options/train/train_hfur.yml
+
+### Single GPU Testing
+
+> CUDA_VISIBLE_DEVICES=0 \\\
+> python basicsr/test.py -opt options/test/test_HFUR.yml
+
+## Datasets
+The directories used in the project need to be created manually. <br/>
+Download LDV 1.0 dataset: [https://github.com/RenYang-home/NTIRE21_VEnh]
+Hm16.20 is used to compress the standard test sequence. https://hevc.hhi.fraunhofer.de/svn/svn_HEVCSoftware/tags/HM-16.20 or https://data.vision.ee.ethz.ch/reyang/HM16.20.zip  <br/>
