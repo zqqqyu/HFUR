@@ -600,11 +600,6 @@ class ImpFreqUp(nn.Module):
             nn.PixelShuffle(2)
         )
 
-        self.upscale2 = nn.Sequential(
-            nn.Conv2d(in_channels=n_channels, out_channels=n_channels * 4,
-                      kernel_size=3, stride=1, padding=1, bias=False),
-            nn.PixelShuffle(2)
-        )
 
     def forward(self, x):  # x size = [1,64,n,n]
         _t = self.pyramid(x)
