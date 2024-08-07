@@ -11,6 +11,7 @@ This is the official repository of "Hierarchical Frequency-based Upsampling and 
 Enhanced videos under various compression ratios. 
 The videos have been compressed. Therefore, the results are inferior to that of the actual outputs.
 
+QP37：
 https://github.com/user-attachments/assets/923bcd93-c802-4293-bc48-f923d1da4cff
 
 https://github.com/user-attachments/assets/88009ffa-5084-4c7a-9b7b-7722ffc135cc
