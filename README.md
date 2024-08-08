@@ -37,7 +37,7 @@ https://github.com/user-attachments/assets/2ae577a3-dc64-4923-8c54-5caebb7724e2
 
 ### Single GPU Testing
 
-Download the pre-trained weights to checkpoints:
+Download the pre-trained weights to checkpoints:https://pan.baidu.com/s/1hIMYPkH7t_s1uHz6AOM0Qw [hfur]
 
 > CUDA_VISIBLE_DEVICES=0 \\\
 > python basicsr/test.py -opt options/test/test_HFUR.yml
