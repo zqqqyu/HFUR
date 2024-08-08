@@ -65,7 +65,8 @@ class ImplicitTrans(nn.Module):
             _u = 2 * i + 1  
             for j in np.arange(0.0, 8.0, 0.5):
                 _v = 2 * j + 1  
-                index1 = int(_u * _v - 1)
+                index = i * 16 + j
+                index1 = int(2 * index - 1)
                 for u in range(8):  
                     for v in range(8):
                         index2 = u * 8 + v
@@ -620,10 +621,13 @@ class ImpFreqUp(nn.Module):
         _td = torch.cat([_ty, _tc], dim=1)  # [4,128,16,16]
         _td = self.conv_4(_td)  # _td:torch.Size([1, 64, 48, 48])
 
-	y = torch.add(_td, _tp)  
-      #  y = y.mul(0.1)
-      #  x = self.upscale2(x)
-      #  y = torch.add(x, y)
+	#y = torch.add(_td, _tp)  
+        y = self.attention(_td, _tp)
+        #y = torch.add(_td, _tp)  
+        y = y.mul(0.1)
+        
+        x = self.upscale(x)
+        y = torch.add(x, y)
         return y
 
 
