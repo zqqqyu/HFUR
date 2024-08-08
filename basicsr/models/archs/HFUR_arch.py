@@ -601,10 +601,8 @@ class ImpFreqUp(nn.Module):
             nn.PixelShuffle(2)
         )
 
-
     def forward(self, x):  # x size = [1,64,n,n]
         _t = self.pyramid(x)
-        #_t = self.channel_squeeze(_t)  # _t torch.Size([1, 64, 24, 24])
 
         _ty = self.conv_1(_t)
         _tc = self.conv_2(_t)
@@ -620,14 +618,14 @@ class ImpFreqUp(nn.Module):
 
         _td = torch.cat([_ty, _tc], dim=1)  # [4,128,16,16]
         _td = self.conv_4(_td)  # _td:torch.Size([1, 64, 48, 48])
-
-	#y = torch.add(_td, _tp)  
-        y = self.attention(_td, _tp)
-        #y = torch.add(_td, _tp)  
-        y = y.mul(0.1)
+        y = torch.add(_td,_tp)
+       
+       # y=self.attention(_td, _tp)
+       # y = torch.add(_td, _tp) 
+       # y = y.mul(0.1)
         
-        x = self.upscale(x)
-        y = torch.add(x, y)
+      #  x = self.upscale(x)
+       # y = torch.add(x, y)
         return y
 
 
